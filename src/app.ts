@@ -7,6 +7,10 @@ require('dotenv').config();
 const app: Application = express();
 const port = process.env.PORT || 3000; // Define port (use 3001 if 3000 is in use)
 
+const { apiHelmet, addCustomApiHeaders } = require('./api/v1/middleware/helmet.js');
+app.use(apiHelmet);
+app.use(addCustomApiHeaders);
+
 app.use(morgan('combined')); // Log HTTP requests
 app.use(express.json()); // Parse JSON request bodies
 
