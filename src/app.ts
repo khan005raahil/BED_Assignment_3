@@ -2,6 +2,8 @@ import express, { Application, Request, Response } from 'express';
 import morgan from 'morgan';
 import employeeRoutes from './api/v1/routes/employee.routes';
 import branchRoutes from './api/v1/routes/branch.routes';
+import usersRoutes from './api/v1/routes/users.routes';
+
 
 require('dotenv').config();
 const app: Application = express();
@@ -15,6 +17,15 @@ const apiCors = require('./api/v1/middleware/cors');
 app.use(apiCors);
 
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.get('/openapi.json', (_req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerSpec);
+});
+
 app.use(morgan('combined')); // Log HTTP requests
 app.use(express.json()); // Parse JSON request bodies
 
@@ -26,6 +37,8 @@ app.get('/health', (_req: Request, res: Response) => {
 // Mount routes
 app.use('/api/v1/employees', employeeRoutes);
 app.use('/api/v1/branches', branchRoutes);
+app.use('/api/v1/users', usersRoutes);
+
 
 // Start the server
 app.listen(port, () => {
