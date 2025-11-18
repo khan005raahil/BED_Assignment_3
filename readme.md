@@ -15,7 +15,7 @@ This project is a secure REST API built using **Node.js, Express, and TypeScript
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/<your-username>/<your-repo>.git
+git https://github.com/khan005raahil/BED_Assignment_3.git
 cd <your-repo>
 ```
 
@@ -82,7 +82,7 @@ GET /api/v1/users
 {
   "success": true,
   "data": [
-    { "id": 1, "name": "Rohit", "email": "rohit@example.com" }
+    { "id": 1, "name": "sam", "email": "sam@example.com" }
   ]
 }
 ```
@@ -97,7 +97,7 @@ GET /api/v1/users/1
 ```json
 {
   "success": true,
-  "data": { "id": 1, "name": "Rohit", "email": "rohit@example.com" }
+  "data": { "id": 1, "name": "sam", "email": "sam@example.com" }
 }
 ```
 
@@ -152,7 +152,7 @@ This file is automatically deployed to **GitHub Pages**.
 ## Branch Workflow
 - `master` -> main branch
 - `document-security` -> feature branch
-- 20+ meaningful commits required
+- meaningful commits required
 
 ---
 
