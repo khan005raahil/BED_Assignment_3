@@ -11,6 +11,10 @@ const { apiHelmet, addCustomApiHeaders } = require('./api/v1/middleware/helmet.j
 app.use(apiHelmet);
 app.use(addCustomApiHeaders);
 
+const apiCors = require('./api/v1/middleware/cors');
+app.use(apiCors);
+
+
 app.use(morgan('combined')); // Log HTTP requests
 app.use(express.json()); // Parse JSON request bodies
 
